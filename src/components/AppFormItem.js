@@ -4,6 +4,7 @@ import AppLabel from './AppLabel'
 import AppFormInputError from './AppFormInputError'
 
 const Component = ({ label, placeholder, name, type, value, error, touched, Input, setFieldValue, setFieldTouched }) => {
+  const isSecureTextEntry = type === 'password'
   return (
     <View>
       <AppLabel error={error} touched={touched}>{label}</AppLabel>
@@ -14,7 +15,7 @@ const Component = ({ label, placeholder, name, type, value, error, touched, Inpu
         value={value}
         onChangeText={(value) => setFieldValue(name, value)}
         onBlur={() => setFieldTouched(name)}
-        secureTextEntry={type === 'password'}
+        secureTextEntry={isSecureTextEntry}
       />
       <AppFormInputError
         error={error}
